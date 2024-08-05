@@ -1,0 +1,16 @@
+rom sklearn.decomposition import TruncatedSVD
+from numpy.linalg import svd
+import numpy as np
+
+# Example data
+X = np.array([[0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 1]])
+
+# TruncatedSVD: Dimensionality reduction
+model_truncated = TruncatedSVD(n_components=2)
+X_transformed = model_truncated.fit_transform(X)
+
+# Full SVD: Full decomposition
+U, S, VT = svd(X, full_matrices=True)
+
+print("Truncated SVD transformed data shape:", X_transformed.shape)
+print("Full SVD singular values:", S)
